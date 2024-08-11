@@ -1,0 +1,45 @@
+%% PREAMBEL %%
+\input{template/preamble.tex}
+
+%% DOKUMENT START %%
+\begin{document}
+
+    \pagenumbering{roman} % Sidenummerering for forord og TOC
+    
+    %% FORSIDE %%
+    \include{template/title}
+    % \usepackage{array}
+    % \usepackage{multirow}
+    
+    \newcommand\MyBox[2]{
+      \fbox{\lower0.75cm
+        \vbox to 1.7cm{\vfil
+          \hbox to 1.7cm{\hfil\parbox{1.4cm}{#1\\#2}\hfil}
+          \vfil}%
+      }%
+    }
+    %% Declaration %%
+    %%\include{template/declaration.tex}
+    
+    %% INNHOLDSFORTEGNELSE %%
+    \setlength{\parskip}{.5em} % Setter linjeavstander i TOC litt mindre
+    \cleardoublepage
+    \tableofcontents
+    \setlength{\parskip}{1em} % Går tilbake til standard avstand
+    \newpage
+    
+    %% SAMMENDRAG & FORORD %%
+    
+    \pagenumbering{arabic} % Sidenummerering for resten av dokumentet
+    
+    %% SEKSJONER %%
+    \include{sections/introduction}
+    % \include{sections/Task1}
+
+    %\include{sections/old_Experiment on Classification Task}
+    \include{sections/Conclusion}
+    % \listoffigures
+    \newpage
+    
+
+\end{document}

@@ -1,0 +1,591 @@
+\section{Bayes Classifier for the DATASET 1}
+\textbf{DATASET 1: Linearly Separable data}\\
+Dataset 1 contains 2-dimensional linearly separable data. Each class has 500 data points. There are 3 classes of data. The data is divided from each class into training, and test data. From each class, train, and test split is 70\% and 30\% respectively.\\
+\\
+Figure shows the (a) train and (b) test data points plotted for three different classes in Dataset1. Table gives the division of the dataset into Train and Test samples.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Class} & \textbf{Train Sample} & \textbf{Test Sample}\\
+\hline
+Class 1 & 350 & 150 \\
+\hline 
+Class 2 & 350 & 150 \\
+\hline
+Class 3 & 350 & 150 \\
+\hline
+\end{tabular}
+\caption{Number of Training and Test Samples in Dataset 1}
+\label{tab:Table1}
+\end{table}
+
+% \begin{figure}
+%     \begin{subfigure}{0.49\textwidth}
+%         \includegraphics[width=\linewidth]{img/q1.png}
+%         \caption{Image 1}
+%     \end{subfigure}%
+%     \hfill
+%     \begin{subfigure}{0.49\textwidth}
+%         \includegraphics[width=\linewidth]{img/q2.png}
+%         \caption{Image 2}
+%     \end{subfigure}
+% \caption{Visualization of Training Samples in Dataset-1}
+% \end{figure}
+
+\begin{figure}[!hbt]
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q1.png}
+        \caption{Train data points}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q2.png}
+        \caption{Test data points}
+    \end{subfigure}
+    
+    
+    \caption{ Data points for each class in Dataset 1.}
+    \label{fig:Figure2}
+\end{figure}
+
+\subsection{CASE 1: Covariance matrix for all the classes is same and is \textbf{$\sigma^2I$}}
+This is a simple case where we assume that all data classes have the same variance. Since the actual data given do not follow this assumption, we generate the same covariance matrix for all the classes by taking the average of covariance matrices of all the classes. Also, the same variance is calculated by averaging all the variances.\\
+\begin{table}[H]
+    \begin{minipage}{0.37\textwidth}
+        \centering
+    
+        \begin{tabular}{|c|c|}
+        \hline
+        10.674319 & 1.099848 \\
+        \hline 
+        1.099848 & 2.334969 \\
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{0.37\textwidth}
+        \begin{tabular}{|c|c|}
+        \hline
+        2.626626 & -1.696984 \\
+        \hline 
+        -1.696984 & 4.645684 \\
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{0.37\textwidth}
+        \begin{tabular}{|c|c|}
+        \hline
+        1.993576 & 1.375322 \\
+        \hline 
+        1.375322 & 9.560346 \\
+        \hline
+        \end{tabular}
+    \end{minipage}
+\caption{Covariance Matrix for Class 1, Class 2, and Class 3 Data}
+\label{tab:Table2}
+\end{table}
+
+
+\begin{table}[H]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            
+            5.098173   & 0.25939   \\
+            \hline
+            0.25939   & 5.51366  \\
+            \hline
+        \end{tabular}
+        \caption{Average Covariance Matrix}
+        \label{tab:Table3}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            
+            5.305920   & 0.   \\
+            \hline
+            0.   & 5.305920   \\
+            \hline
+        \end{tabular}
+    \caption{Diagonal Covariance Matrix}
+    \label{tab:Table4}
+    \end{minipage}
+\end{table}
+
+
+
+\subsubsection{Decision Boundaries Obtained}
+The decision boundaries for Training dataset is obtained. The learnt decision boundaries are then used to test the testing samples. From the Figure 3 we can see that the data points of any two classes can be separated by a straight
+line.
+\\
+\begin{figure}[!hbt]
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q3.png}
+        \caption{Class 1 vs Class 2 }
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q4.png}
+        \caption{Class 2 vs Class 3}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q5.png}
+        \caption{Class 1 vs Class 3}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q6.png}
+        \caption{Decision boundaries between all the classes}
+    \end{subfigure}
+    
+    \caption{Decision Boundaries on Training dataset}
+    \label{fig:Figure3}
+
+\end{figure}
+
+%Decision Boundaries used on Testing Dataset
+\begin{figure}[!hbt]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/q8.png}
+    \end{subfigure}
+\caption{Decision Boundaries on Test dataset}
+\label{fig:Figure4}
+\end{figure}
+
+\subsubsection{Contour Plots Obtained}
+The following Figure shows the data points plotted with their corresponding constant density contours. Since we have forced the variance of each class to be equal, with each feature having the same variance, we see that the constant density contours are circular in nature as well parallel to the coordinate axis as our covariance matrix is a diagonal matrix.\\
+
+\begin{figure}[!hbt]
+     \centering
+     \includegraphics[scale=1]{img/q10.png}
+     \caption{Contour plots on Training Dataset}
+     \label{fig:Figure5}
+\end{figure}
+
+\subsubsection{Results}
+For testing the performance of the classifier, we have considered 30\% of the data points from each class which was not used in the training phase. The performance of the classifier is measured by comparing the output of the classifier with the ground truth. A confusion matrix is created in order to quantify the performance of our classifier which is given below and the Table summarizes
+the precision, recall and f-measure values obtained for individual classes and overall.\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Class 1 (A)} & \textbf{Class 2 (A)} & \textbf{Class 3 (A)}\\
+\hline
+\textbf{Class 1 (P)} & 150 & 0 & 0 \\
+\hline 
+\textbf{Class 2 (P)} & 0 & 150 & 0 \\
+\hline
+\textbf{Class 3 (P)} & 2 & 0 & 148 \\
+\hline
+\end{tabular}
+\caption{Confusion Matrix}
+\label{tab:Table5}
+\end{table}
+
+The accuracy obtained in this case is 100\%.\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Precision} & \textbf{Recall} & \textbf{F-measure}\\
+\hline
+\textbf{Class 1 (P)} & 0.99 & 1.00 & 0.99 \\
+\hline 
+\textbf{Class 2 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline
+\textbf{Class 3 (P)} & 1.00 & 0.99 & 0.99 \\
+\hline
+\textbf{Mean} & 1.00 & 1.00 & 1.00 \\
+\hline
+\end{tabular}
+\caption{Performance Matrix}
+\label{tab:Table6}
+\end{table}
+
+
+\subsection{CASE 2: Covariance matrix for all the classes is same and is \textbf{$\sum$}}
+Here we assume that all data classes have the same covariance matrix. We generate the same covariance matrix for all the classes by taking the average of covariance matrices of all the classes. \\
+
+\begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            
+            5.098173   & 0.25939   \\
+            \hline
+            0.25939   & 5.51366  \\
+            \hline
+        \end{tabular}
+        \caption{Average Covariance Matrix}
+        \label{tab:Table7}
+\end{table}
+
+
+
+\subsubsection{Decision Boundaries Obtained}
+The decision boundaries for Training dataset is obtained. The learnt decision boundaries are then used to test the testing samples.\\
+\begin{figure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/r1.png}
+        \caption{Class 1 vs Class 2 }
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/r2.png}
+        \caption{Class 2 vs Class 3}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/r3.png}
+        \caption{Class 1 vs Class 3}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/r4.png}
+        \caption{Decision boundaries between all the classes}
+    \end{subfigure}
+    \caption{Decision Boundaries on Training dataset}
+    \label{fig:Figure6}
+\end{figure}
+
+%Decision Boundaries used on Testing Dataset
+\begin{figure}
+\centering
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/r6.png}
+    \end{subfigure}
+\caption{Decision Boundaries on Test dataset}
+\label{fig:Figure7}
+\end{figure}
+
+\subsubsection{Contour Plots Obtained}
+The following figure shows the data points plotted with their corresponding constant density contours. Since we have forced the variance of each class to be equal, with each feature having the same variance, we see that the constant density contours are circular in nature as well parallel to the coordinate axis as our covariance matrix is a diagonal matrix.\\
+
+\begin{figure}[H]
+     \centering
+     \includegraphics[scale=1]{img/r7.png}
+     \caption{Contour plots on Training Dataset}
+     \label{fig:Figure8}
+\end{figure}
+
+\subsubsection{Results}
+For testing the performance of the classifier, we have considered 30\% of the data points from each class which was not used in the training phase. The performance of the classifier is measured by comparing the output of the classifier with the ground truth. A confusion matrix is created in order to quantify the performance of our classifier which is given below and the Table summarizes
+the precision, recall and f-measure values obtained for individual classes and overall.\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Class 1 (A)} & \textbf{Class 2 (A)} & \textbf{Class 3 (A)}\\
+\hline
+\textbf{Class 1 (P)} & 150 & 0 & 0 \\
+\hline 
+\textbf{Class 2 (P)} & 0 & 150 & 0 \\
+\hline
+\textbf{Class 3 (P)} & 2 & 0 & 148 \\
+\hline
+\end{tabular}
+\caption{Confusion Matrix}
+\label{tab:Table8}
+\end{table}
+
+The accuracy obtained in this case is 100\%.\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Precision} & \textbf{Recall} & \textbf{F-measure}\\
+\hline
+\textbf{Class 1 (P)} & 0.99 & 1.00 & 0.99 \\
+\hline 
+\textbf{Class 2 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline
+\textbf{Class 3 (P)} & 1.00 & 0.99 & 0.99 \\
+\hline
+\textbf{Mean} & 1.00 & 1.00 & 1.00 \\
+\hline
+\end{tabular}
+\caption{Performance Matrix}
+\label{tab:Table9}
+\end{table}
+
+
+\subsection{CASE 3: Covariance matrix is diagonal and different for each class.}
+Here all data classes have the different covariance matrix.\\
+
+\begin{table}[H]
+    \begin{minipage}{0.37\textwidth}
+        \centering
+    
+        \begin{tabular}{|c|c|}
+        \hline
+        10.674319 & 0. \\
+        \hline 
+        0. & 2.334969 \\
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{0.37\textwidth}
+        \begin{tabular}{|c|c|}
+        \hline
+        2.626626 & 0. \\
+        \hline 
+        0. & 4.645684 \\
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{0.37\textwidth}
+        \begin{tabular}{|c|c|}
+        \hline
+        1.993576 & 0. \\
+        \hline 
+        0. & 9.560346 \\
+        \hline
+        \end{tabular}
+    \end{minipage}
+\caption{Covariance Matrix for Class 1, Class 2, and Class 3}
+\label{tab:Table10}
+\end{table}
+
+\subsubsection{Decision Boundaries Obtained}
+The decision boundaries for Training dataset is obtained. The learnt decision boundaries are then used to test the testing samples.
+\begin{figure}[!hbt]
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/s1.png}
+        \caption{Class 1 vs Class 2 }
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/s2.png}
+        \caption{Class 2 vs Class 3}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/s3.png}
+        \caption{Class 1 vs Class 3}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/s4.png}
+        \caption{Decision boundaries between all the classes}
+    \end{subfigure}
+    
+    \caption{Decision Boundaries on Training dataset}
+    \label{fig:Figure9}
+
+\end{figure}
+
+%Decision Boundaries used on Testing Dataset
+\begin{figure}[!hbt]
+\centering
+\begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/s6.png}
+    \end{subfigure}
+\caption{Decision Boundaries on Test dataset}
+\label{fig:Figure10}
+
+\end{figure}
+
+\subsubsection{Contour Plots Obtained}
+The following Figure shows the data points plotted with their corresponding constant density contours. Since we have forced the variance of each class to be equal, with each feature having the same variance, we see that the constant density contours are circular in nature as well parallel to the coordinate axis as our covariance matrix is a diagonal matrix.
+
+\begin{figure}[!hbt]
+     \centering
+     \includegraphics[scale=0.8]{img/s8.png}
+     \caption{Contour plots on Training Dataset}
+     \label{fig:Figure11}
+\end{figure}
+
+\newpage
+\subsubsection{Results} 
+For testing the performance of the classifier, we have considered 30\% of the data points from each class which was not used in the training phase. The performance of the classifier is measured by comparing the output of the classifier with the ground truth. A confusion matrix is created in order to quantify the performance of our classifier which is given below and the Table summarizes
+the precision, recall and f-measure values obtained for individual classes and overall.\\
+
+\begin{table}[!hbt]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Class 1 (A)} & \textbf{Class 2 (A)} & \textbf{Class 3 (A)}\\
+\hline
+\textbf{Class 1 (P)} & 150 & 0 & 0 \\
+\hline 
+\textbf{Class 2 (P)} & 0 & 150 & 0 \\
+\hline
+\textbf{Class 3 (P)} & 0 & 0 & 150 \\
+\hline
+\end{tabular}
+\caption{Confusion Matrix}
+\label{tab:arch29}
+\end{table}
+
+The accuracy obtained in this case is 100\%.\\
+
+\begin{table}[!hbt]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Precision} & \textbf{Recall} & \textbf{F-measure}\\
+\hline
+\textbf{Class 1 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline 
+\textbf{Class 2 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline
+\textbf{Class 3 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline
+\textbf{Mean} & 1.00 & 1.00 & 1.00 \\
+\hline
+\end{tabular}
+\caption{Performance Matrix}
+\label{tab:arch29}
+\end{table}
+
+\subsection{CASE 4: Full Covariance matrix and different for each class.}
+Here all data classes have the different full covariance matrix.\\
+
+\begin{table}[H]
+    \caption{Covariance Matrix for Class 1, Class 2, and Class 3 Data}
+    \begin{minipage}{0.37\textwidth}
+        \centering
+    
+        \begin{tabular}{|c|c|}
+        \hline
+        10.674319 & 1.099848 \\
+        \hline 
+        1.099848 & 2.334969 \\
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{0.37\textwidth}
+        \begin{tabular}{|c|c|}
+        \hline
+        2.626626 & -1.696984 \\
+        \hline 
+        -1.696984 & 4.645684 \\
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{0.37\textwidth}
+        \begin{tabular}{|c|c|}
+        \hline
+        1.993576 & 1.375322 \\
+        \hline 
+        1.375322 & 9.560346 \\
+        \hline
+        \end{tabular}
+    \end{minipage}
+\label{tab:arch29}
+\end{table}
+
+
+
+\subsubsection{Decision Boundaries Obtained}
+The decision boundaries for Training dataset is obtained. The learnt decision boundaries are then used to test the testing samples.\\
+\begin{figure}[!hbt]
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/t1.png}
+        \caption{Class 1 vs Class 2 }
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/t2.png}
+        \caption{Class 2 vs Class 3}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/t3.png}
+        \caption{Class 1 vs Class 3}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/t4.png}
+        \caption{Decision boundaries between all the classes}
+    \end{subfigure}
+    
+    \caption{Decision Boundaries on Train dataset}
+\end{figure}
+
+%Decision Boundaries used on Testing Dataset
+\begin{figure}[!hbt]
+\centering
+\begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{img/t6.png}
+    \end{subfigure}
+\caption{Decision Boundaries on Test dataset}
+\end{figure}
+
+\subsubsection{Contour Plots Obtained}
+The following figure shows the data points plotted with their corresponding constant density contours. Since we have forced the variance of each class to be equal, with each feature having the same variance, we see that the constant density contours are circular in nature as well parallel to the coordinate axis as our covariance matrix is a diagonal matrix.\\
+
+\begin{figure}[!hbt]
+     \centering
+     \includegraphics[scale=0.8]{img/t7.png}
+     \caption{Contour plots on Training Dataset}
+     \label{tab:arch29}
+\end{figure}
+
+\subsubsection{Results}
+For testing the performance of the classifier, we have considered 30\% of the data points from each class which was not used in the training phase. The performance of the classifier is measured by comparing the output of the classifier with the ground truth. A confusion matrix is created in order to quantify the performance of our classifier which is given below and the Table summarizes
+the precision, recall and f-measure values obtained for individual classes and overall.\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Class 1 (A)} & \textbf{Class 2 (A)} & \textbf{Class 3 (A)}\\
+\hline
+\textbf{Class 1 (P)} & 150 & 0 & 0 \\
+\hline 
+\textbf{Class 2 (P)} & 0 & 150 & 0 \\
+\hline
+\textbf{Class 3 (P)} & 0 & 0 & 150 \\
+\hline
+\end{tabular}
+\caption{Confusion Matrix}
+\label{tab:arch29}
+\end{table}
+
+The accuracy obtained in this case is 100\%.\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\ & \textbf{Precision} & \textbf{Recall} & \textbf{F-measure}\\
+\hline
+\textbf{Class 1 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline 
+\textbf{Class 2 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline
+\textbf{Class 3 (P)} & 1.00 & 1.00 & 1.00 \\
+\hline
+\textbf{Mean} & 1.00 & 1.00 & 1.00 \\
+\hline
+\end{tabular}
+\caption{Performance Matrix}
+\label{tab:arch29}
+\end{table}
+
+\subsection{INFERENCE}
+\begin{enumerate}
+  \item \textbf{Bayes Classifier is a reliable method for a classification task. It makes use of likelihood and prior of the classes under observation for the classification of the data.}
+  \item \textbf{We get a linear decision boundary between the classes when the covariance matrix is same for all the classes. (for diagonal as well as non-diagonal cases.}
+  \item \textbf{We get a non-linear decision boundaries between the classes when the covariance matrix is different for all the classes. \textit{Hence the nature of covariance matrix is important in deciding the type of decision boundary.}}
+  \item \textbf{When we used the same covariance matrix for all the classes and the covariance matrix is a diagonal matrix, the shape of Contour Plots are concentric circles for all the classes. (Figure 5)}
+  \item \textbf{In case the variances are different in a covariance matrix the contour plots will be ellipse and there will be a major and minor axis of ellipse.}
+  \item \textbf{The covariance terms (i.e. non-diagonal entries) controls the tilts in the contour plots.}
+  \item \textbf{The linear boundary is perpendicular bisector when the prior of the two classes is same.}
+  \item \textbf{If the prior is not same, the decision boundary is shifted towards the class having higher prior.}
+  \item \textbf{We got high accuracy, precision and recall in all the cases as the Dataset-1 was linearly separable.}
+  
+\end{enumerate}
+
